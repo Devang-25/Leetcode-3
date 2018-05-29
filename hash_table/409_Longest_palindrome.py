@@ -1,3 +1,10 @@
+"""
+Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
+
+This is case sensitive, for example "Aa" is not considered a palindrome here.
+
+"""
+
 class Solution(object):
     def longestPalindrome(self, s):
         """
@@ -23,3 +30,7 @@ class Solution(object):
                 max_length += count_dict[key] - 1
                 flag = 1
         return max_length + flag
+
+    def bitwiseSolution(self, s):
+        odds = sum(v & 1 for v in collections.Counter(s).values())
+        return len(s) - odds + bool(odds)
