@@ -69,4 +69,4 @@ class Solution(object):
                 return right_bottom or left_bottom
 
         run1(root)
-        run2(root)
+        run2(root) 
