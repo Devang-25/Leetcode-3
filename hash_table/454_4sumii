@@ -1,6 +1,8 @@
+# solution 1
+# time complexity: O(N^2)
+
 from typing import List
 from collections import defaultdict
-
 
 class Solution:
   def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
@@ -28,5 +30,37 @@ class Solution:
       if s2 in dict2:
         new_result = len(dict1[s1]) * len(dict2[s2])
         result += new_result
+    
+    return result
+
+
+###############################
+
+# solution 2 - Faster
+# only remember how many pairs of numbers add up equal to a particular sum instead of remember their index
+# Do not need dict2; instead, check if the pairing sum1 in dict1 or not when going through C and D
+# overall time complexity remain at O(N^2)
+
+class Solution:
+  def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+    result = 0
+    dict1 = {} # key:sum, value:int(number of ways to add up to this sum)
+
+    # add the pair of A,B to create dict1
+    for a in A:
+      for b in B:
+        s = a + b
+        if s in dict1:  
+          dict1[s] += 1
+        else:
+          dict1[s] = 1
+    # print("dict1", dict1)
+
+    # do the same for C, D to creadt dict2
+    for c in C:
+      for d in D:
+        s = c + d
+        if (-s) in dict1:
+          result += dict1[-s]
     
     return result
