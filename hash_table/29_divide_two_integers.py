@@ -17,11 +17,15 @@ Thought:
 # Then update dividend by subtracting divisor from it: dividend -= divisor. 
 # The repeat from step 1 again until the new dividend is smaller than 
 
-Time Complexity: O(log(dividend/divisor))
+Time Complexity: O(N^2)
+N = O(log(dividend/divisor))
+
 calculation of time complexity
-3*(2^i)=20
+3*(2^n)=20
 log_2(20/3)
-log_2(dividend/divisor)
+n = log_2(dividend/divisor) for first while loop
+and rest of while loop would need half and half and half
+(N + N-1 + N-2 + N-3.... + 1)=O(N^2)
 
 """
 
