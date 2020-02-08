@@ -1,0 +1,32 @@
+from typing import List
+from collections import defaultdict
+
+
+class Solution:
+  def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+    result = 0
+    dict1 = defaultdict(list) # key:sum, value:list(tuple(i_a, i_b))
+    dict2 = defaultdict(list) # key:sum, value:list(tuple(i_c, i_d))
+
+    # add the pair of A,B to create dict1
+    for a in range(len(A)):
+      for b in range(len(B)):
+        s = A[a] + B[b]
+        dict1[s].append((a, b))
+    # print("dict1", dict1)
+
+    # do the same for C, D to creadt dict2
+    for c in range(len(C)):
+      for d in range(len(D)):
+        s = C[c] + D[d]
+        dict2[s].append((c, d))
+    # print("dict2", dict2)
+
+    # use O(N) time complexity if any pair in dict1 + dict2 == 0
+    for s1 in dict1.keys():
+      s2 = 0 - s1
+      if s2 in dict2:
+        new_result = len(dict1[s1]) * len(dict2[s2])
+        result += new_result
+    
+    return result
