@@ -64,3 +64,16 @@ class Solution:
           result += dict1[-s]
     
     return result
+
+
+#########################
+# test cases
+
+A = [ 1, 2]
+B = [-2,-1]
+C = [-1, 2]
+D = [ 0, 2]
+
+s = Solution()
+result = s.fourSumCount(A, B, C, D)
+print("result:", result)
