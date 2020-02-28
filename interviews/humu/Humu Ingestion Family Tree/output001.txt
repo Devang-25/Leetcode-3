@@ -1,0 +1,8 @@
+id,name,gender,birth,death,parent1,parent2,age,descendants
+5,Darrell Thornton,male,1892-02-11,1955-03-29,,,23056,5
+1,Marilyn Parrish,female,1906-12-05,1966-12-05,,,21915,5
+4,Ashton Jackson,male,1923-07-12,1988-03-01,1,5,23609,1
+2,Rebecca Hobbs,female,1927-01-30,,1,5,33562,2
+6,Clark Parrish,male,1944-05-07,,4,,27255,0
+7,Harlow Parrish,male,1951-06-05,2008-06-17,2,,20832,0
+3,Vienna Hartman,female,1953-08-07,2003-04-21,2,,18154,0

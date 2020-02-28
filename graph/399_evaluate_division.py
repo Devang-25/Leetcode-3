@@ -18,30 +18,35 @@ The input is always valid. You may assume that evaluating the queries will resul
 
 """
 
+import collections
+import itertools
+
+
 class Solution(object):
-    def calcEquation(self, equations, values, queries):
-        """
+
+  def calcEquation(self, equations, values, queries):
+    """
         :type equations: List[list[str]]
         :type values: List[flat]
         :type queries: List[List[str]]
         """
-        # make each pair of equations into dictionary
-        quot = collections.defaultdict(dict)
-        # zip functon take O(1) time time complexity
-        for (num, den), val in zip(equations, values):
-            quot[num][den] = val
-            quot[den][num] = 1 / val
-            quot[num][num] = quot[den][den] = 1.0
-        # a/b * b/c = a/ c => quote[a][c]
-        for a, b, c in itertools.permutations(quot, 3):
-            if b in quot[a] and c in quot[b]:
-                quot[a][c] = quot[a][b] * quot[b][c]
-        return [quot[num].get(den, -1.0) for num, den in queries]
+    # make each pair of equations into dictionary
+    quot = collections.defaultdict(dict)
+    # zip functon take O(1) time time complexity
+    for (num, den), val in zip(equations, values):
+      quot[num][den] = val
+      quot[den][num] = 1 / val
+      quot[num][num] = quot[den][den] = 1.0
+    # a/b * b/c = a/ c => quote[a][c]
+    for a, b, c in itertools.permutations(quot, 3):
+      if b in quot[a] and c in quot[b]:
+        quot[a][c] = quot[a][b] * quot[b][c]
+    return [quot[num].get(den, -1.0) for num, den in queries]
 
 
-equations = [ ["a", "b"], ["b", "c"] ]
+equations = [["a", "b"], ["b", "c"]]
 values = [2.0, 3.0]
-queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ]
+queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
 
 s = Solution()
 s.calcEquation(equations, values, queries)

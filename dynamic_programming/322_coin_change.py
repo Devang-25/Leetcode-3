@@ -13,21 +13,37 @@ Output: -1
 Note:
 You may assume that you have an infinite number of each kind of coin.
 
+Success
+Details 
+Runtime: 668 ms, faster than 93.48% of Python online submissions for Coin Change.
+Memory Usage: 12 MB, less than 60.00% of Python online submissions for Coin Change.
+
+Time complexity:
+O(N*len(coin))
+
+Space Complexity:
+O(N)
+
+where N = amount.
+
 """
 
+
 class Solution(object):
-    def coinChange(self, coins, amount):
-        """
+
+  def coinChange(self, coins, amount):
+    """
         :type coins: List[int]
         :type amount: int
-        :rtype int
+        :rtype: int
         """
-        rs = [amount + 1] * (amount + 1)
-        rs[0] = 0
-        for i in xrange(1, amount+1):
-            for c in coins:
-                if i >= c:
-                    rs[i] = min(rs[i], rs[i-c] + 1)
-        if rs[amount] == amount+1:
-            return -1
-        return rs[amount]
+    states = [float("inf")] * (amount + 1)
+
+    states[0] = 0
+
+    for i in range(1, amount + 1):
+      choices = [states[i - coin] for coin in coins if coin <= i]
+      if choices:
+        states[i] = 1 + min(choices)
+
+    return states[amount] if states[amount] != float("inf") else -1

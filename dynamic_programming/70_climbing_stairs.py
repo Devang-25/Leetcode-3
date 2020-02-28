@@ -33,15 +33,42 @@ for step 4: 2 + 3 = 5
 
 """
 
+
 class Solution(object):
-    def climbStairs(self, n):
-        """
+
+  def climbStairs(self, n):
+    """
         :type n: int
         :rtype: int
         """
-        a = b = 1
-        for _ in range(n):
-            a , b = b, a + b
-        return a
+    a = b = 1
+    for _ in range(n):
+      a, b = b, a + b
+    return a
+
 
 print(Solution().climbStairs(3))
+
+#####################################
+"""
+12 ms	11.6 MB	python
+"""
+
+
+class Solution(object):
+
+  def climbStairs(self, n):
+    """
+        :type n: int
+        :rtype: int
+        """
+    states = [0] * (n + 1)
+    states[1] = 1
+
+    if n > 1:
+      states[2] = 2
+
+    if n > 2:
+      for i in range(3, n + 1):
+        states[i] = states[i - 1] + states[i - 2]
+    return states[n]

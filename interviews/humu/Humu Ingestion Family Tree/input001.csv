@@ -1,0 +1,8 @@
+id,name,gender,birth,death,parent1,parent2
+1,Marilyn Parrish,female,12/5/06,12/5/66,,
+2,Rebecca Hobbs,female,1/30/27,,1,5
+3,Vienna Hartman,female,8/7/53,4/21/03,2,
+4,Ashton Jackson,male,7/12/23,3/1/88,1,5
+5,Darrell Thornton,male,1892-02-11,3/29/55,,
+6,Clark Parrish,male,5/7/44,,4,
+7,Harlow Parrish,male,6/5/51,6/17/08,2,
